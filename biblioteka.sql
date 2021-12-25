@@ -49,9 +49,9 @@ authorID integer,
 authorName varchar(80),
 authorDoB date,
 authorPoB varchar (50),
+authorDoD date,
 authorNumOfWorks integer,
 authorWorkEra varchar (50),
-authorDoD date,
 primary key(authorID)
 );
 
@@ -68,15 +68,16 @@ create table if not exists Zhanri
 create table if not exists Seksionet(
 sectionID integer,
 genreID integer,
-sectionAgeGroup integer,
+sectionAgeGroup varchar(25),
 sectionNumOfCopies integer,
 sectionWorker integer,
 sectionFloor integer,
-sectionName varchar(20) unique,
+sectionName varchar(20),
 primary key(sectionID),
 foreign key(genreID) references Zhanri (genreID),
 foreign key(sectionWorker) references Punetori(workerID)
 );
+
 
 -- 7.
 create table if not exists Libri (
@@ -110,25 +111,27 @@ foreign key(borrowedBookID) references Libri(bookID),
 foreign key(readerID) references Lexuesi(readerID),
 foreign key(workerID) references Punetori(workerID)
 );
-
+drop table if exists Arkiva;
 -- 9.
 create table if not exists Arkiva
 (
-    logID integer,
+    logID integer not null AUTO_INCREMENT,
     bookID integer,
     readerID integer,
     borrowID integer,
-    returnedAfter integer,
+    returnedAfter integer default null,
     primary key(logID),
     foreign key(bookID) references Libri(bookID),
     foreign key (readerID) references Lexuesi(readerID),
     foreign key (borrowID) references Huazimi (borrowID)
 );
 
+
+drop table if exists Pagesa;
 -- 10.
 create table if not exists Pagesa
 (
-    paymentID integer,
+    paymentID integer not null AUTO_INCREMENT,
     readerID integer,
     workerID integer,
     billPrice real,
@@ -137,11 +140,11 @@ create table if not exists Pagesa
     foreign key (readerID) references Lexuesi (readerID),
     foreign key (workerID) references Punetori (workerID)
 );
-
+drop table if exists LibratDemtuar;
 -- 11.
 create table if not exists LibratDemtuar
 (
-    damagedBookID integer,
+    damagedBookID integer not null AUTO_INCREMENT,
     bookID integer,
     bookRegistrationDate date,
     workerID integer,
@@ -153,21 +156,24 @@ create table if not exists LibratDemtuar
     foreign key(billID) references Pagesa(paymentID)
 );
 
+
+drop table if exists Regjistrimi;
 -- 12.
 create table if not exists Regjistrimi
 (
-    registrationID integer,
+    registrationID integer not null AUTO_INCREMENT,
     registrationDate date,
     billID integer,
     registrationLengthDays integer,
     registrationActive bool,
+    typeOfRegistration enum('Anetare', 'Lexues'),
     primary key(registrationID),
     foreign key(billID) references Pagesa(paymentID)
 );
-
+drop table if exists DhurimiLibrit;
 -- 13.
 create table if not exists DhurimiLibrit(
-    donationID integer,
+    donationID integer not null AUTO_INCREMENT,
     bookID integer,
     workerID integer,
     donationDate date,
@@ -176,10 +182,11 @@ create table if not exists DhurimiLibrit(
     foreign key(workerID) references Punetori(workerID)
 );
 
+drop table if exists Vleresimi;
 -- 14.
 create table if not exists Vleresimi
 (
-    reviewID integer,
+    reviewID integer not null AUTO_INCREMENT,
     bookReviewed integer,
     reviewer integer,
     reviewLevel real,
@@ -188,3 +195,5 @@ create table if not exists Vleresimi
     foreign key(bookReviewed) references Libri (bookID),
     foreign key (reviewer) references Lexuesi (readerID)
 );
+
+alter table Vleresimi AUTO_INCREMENT = 800;
