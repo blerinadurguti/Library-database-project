@@ -49,225 +49,44 @@ values ('Albina', 'Hoti', 'Mbreteresha Teute', '1', '38344768493', 'albinahoti@g
        ('Adnit', 'Gashi', 'Fan Noli', '2', '38345087085', 'adnitgashi@gmail.com', 3);
 
 
-use biblioteka;
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Art', 'Tmava', 'Selim', 'M', '2002-02-11', 'William Walker', '1', '38349123456', 'atmava@gmail.com',
-        'Student');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (90, 20, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (91, 21, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (92, 22, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (93, 23, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (94, 24, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (95, 25, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (96, 21, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (97, 27, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (98, 25, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (99, 29, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (100, 30, 0.5, 'Registration');
+INSERT INTO biblioteka.pagesa (paymentID, workerID, billPrice, typeOfPayment) VALUES (101, 28, 0.5, 'Registration');
 
-SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values ('2020-12-26', 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (20, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (110, '2020-12-26', 90, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (111, '2019-11-22', 91, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (112, '2019-05-06', 92, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (113, '2021-12-26', 93, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (114, '2021-12-26', 94, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (115, '2021-12-26', 95, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (116, '2021-12-26', 96, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (117, '2021-12-26', 97, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (118, '2021-12-26', 98, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (119, '2021-12-26', 99, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (120, '2021-12-26', 100, 365, 1, 'Anetare');
+INSERT INTO biblioteka.regjistrimi (registrationID, registrationDate, billID, registrationLengthDays, registrationActive, typeOfRegistration) VALUES (121, '2021-12-26', 101, 365, 1, 'Anetare');
 
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Era', 'Hajdari', 'Ismajl', 'F', '2000-04-03', 'Bill Klinton', '1', '38344321546', 'eahajda@gmail.com',
-        'Mesuese');
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values ('2019-11-22', 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (21, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Dren', 'Shehu', 'Safet', 'M', '2001-01-17', 'Ismail Kodra', '5', '38346768143', 'drensh1@gmail.com',
-        'Student');
-SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values ('2019-5-6', 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (22, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Dimal', 'Kryeziu', 'Smajl', 'M', '2000-11-05', 'Sami Frasheri', '7', '38345879687', 'dkryeziu13@gmail.com',
-        'Student');
-SET @reader = (SELECT LAST_INSERT_ID());
-
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (23, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Fjolla', 'Korenica', 'Hamez', 'F', '2004-07-30', '4 Llullat', '9', '38349871220', 'fjollak@gmail.com',
-        'Nxenese');
-SET @reader = (SELECT LAST_INSERT_ID());
-
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (24, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Aulona', 'Berisha', 'Kadri', 'F', '2003-05-04', 'Aleksandri i Madh', '11', '38344657881',
-        'aulonab32@gmail.com', 'Nxenese');
-SET @reader = (SELECT LAST_INSERT_ID());
-
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (25, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Drenusha', 'Selimi', 'Selman', 'F', '2002-10-22', 'Bekim Isma', '13', '38349555342', 'ds11@gmail.com',
-        'Studente');
-SET @reader = (SELECT LAST_INSERT_ID());
-
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (21, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Melos', 'Elshani', 'Xhevdet', 'M', '1995-12-05', 'Ukshin Hoti', '15', '38346332123', 'eoselshani@gmail.com',
-        'Profesor');
-SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (27, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Klea', 'Dina', 'Albin', 'F', '1990-04-04', 'Isa Boletini', '17', '38349678555', 'dinaklea@gmail.com', 'Mjeke');
-SET @reader = (SELECT LAST_INSERT_ID());
-
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (25, 0.5, 1);
-
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Anjeza', 'Plakolli', 'Arif', 'F', '1994-06-25', 'Bajram Curri', '19', '38343889787', 'anjezap32@gmail.com',
-        'Edukatore');
-SET @reader = (SELECT LAST_INSERT_ID());
-
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (29, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Artan', 'Meha', 'Pajtim', 'M', '1992-11-11', 'Zahir Pajaziti', '12', '38349999567', 'mehaartan92@gmail.com',
-        'Inxhinier');
-SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (30, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
-
-
-insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress,
-                     readerMunicipality, readerPhone, readerEmail, readerOccupation)
-values ('Ensar', 'Hoti', 'Armend', 'M', '1998-09-09', 'Deshmoret e Lirise', '6', '38349677655', 'ensarhh@gmail.com',
-        'Avokat');
-SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
-values (CURDATE(), 365, true, 1);
-SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (workerID, billPrice, typeOfPayment)
-values (28, 0.5, 1);
-update regjistrimi
-set billID = (SELECT LAST_INSERT_ID())
-where registrationID = @regjistrimi;
-
-update lexuesi
-set readerRegistration = @regjistrimi
-where readerID = @reader;
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (10, 'Art', 'Tmava', 'Selim', 'M', '2002-02-11', 'William Walker', 1, '38349123456', 'atmava@gmail.com', 'Student', 110);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (11, 'Era', 'Hajdari', 'Ismajl', 'F', '2000-04-03', 'Bill Klinton', 1, '38344321546', 'eahajda@gmail.com', 'Mesuese', 111);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (12, 'Dren', 'Shehu', 'Safet', 'M', '2001-01-17', 'Ismail Kodra', 5, '38346768143', 'drensh1@gmail.com', 'Student', 112);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (13, 'Dimal', 'Kryeziu', 'Smajl', 'M', '2000-11-05', 'Sami Frasheri', 7, '38345879687', 'dkryeziu13@gmail.com', 'Student', 113);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (14, 'Fjolla', 'Korenica', 'Hamez', 'F', '2004-07-30', '4 Llullat', 9, '38349871220', 'fjollak@gmail.com', 'Nxenese', 114);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (15, 'Aulona', 'Berisha', 'Kadri', 'F', '2003-05-04', 'Aleksandri i Madh', 11, '38344657881', 'aulonab32@gmail.com', 'Nxenese', 115);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (16, 'Drenusha', 'Selimi', 'Selman', 'F', '2002-10-22', 'Bekim Isma', 13, '38349555342', 'ds11@gmail.com', 'Studente', 116);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (17, 'Melos', 'Elshani', 'Xhevdet', 'M', '1995-12-05', 'Ukshin Hoti', 15, '38346332123', 'eoselshani@gmail.com', 'Profesor', 117);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (18, 'Klea', 'Dina', 'Albin', 'F', '1990-04-04', 'Isa Boletini', 17, '38349678555', 'dinaklea@gmail.com', 'Mjeke', 118);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (19, 'Anjeza', 'Plakolli', 'Arif', 'F', '1994-06-25', 'Bajram Curri', 19, '38343889787', 'anjezap32@gmail.com', 'Edukatore', 119);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (20, 'Artan', 'Meha', 'Pajtim', 'M', '1992-11-11', 'Zahir Pajaziti', 12, '38349999567', 'mehaartan92@gmail.com', 'Inxhinier', 120);
+INSERT INTO biblioteka.lexuesi (readerID, readerName, readerSurname, readerParentName, readerGender, readerDoB, readerAddress, readerMunicipality, readerPhone, readerEmail, readerOccupation, readerRegistration) VALUES (21, 'Ensar', 'Hoti', 'Armend', 'M', '1998-09-09', 'Deshmoret e Lirise', 6, '38349677655', 'ensarhh@gmail.com', 'Avokat', 121);
 
 insert into autori (authorName, authorDoB, authorPoB, authorDoD, authorNumOfWorks, authorWorkEra)
 values ('Khaled Hossein', '1965-03-04', 'Afganistan', NULL, '3', ''),
