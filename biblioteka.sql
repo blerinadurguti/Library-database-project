@@ -162,12 +162,10 @@ alter table Arkiva AUTO_INCREMENT = 80;
 create table if not exists Pagesa
 (
     paymentID integer not null AUTO_INCREMENT,
-    readerID integer,
     workerID integer,
     billPrice real,
     typeOfPayment enum('Registration', 'Damaging fees'),
     primary key (paymentID),
-    foreign key (readerID) references Lexuesi (readerID) on delete cascade on update cascade,
     foreign key (workerID) references Punetori (workerID) on delete set null on update cascade
 );
 alter table pagesa AUTO_INCREMENT = 90;
@@ -183,8 +181,10 @@ create table if not exists LibratDemtuar
     workerID integer,
     billID integer,
     damagedRegNotes varchar(80),
+    readerID integer,
     primary key(damagedBookID),
     foreign key(bookID) references Libri(bookID) on delete cascade on update cascade,
+    foreign key(readerID) references Lexuesi(readerID) on delete set null on update cascade,
     foreign key(workerID) references Punetori(workerID) on delete set null on update cascade,
     foreign key(billID) references Pagesa(paymentID) on delete restrict on update cascade
 );
@@ -199,9 +199,7 @@ create table if not exists Regjistrimi
     registrationLengthDays integer,
     registrationActive bool,
     typeOfRegistration enum('Anetare', 'Lexues'),
-    readerID integer,
     primary key(registrationID),
-    foreign key (readerID) references Lexuesi(readerID),
     foreign key(billID) references Pagesa(paymentID) on delete restrict on update cascade
 );
 

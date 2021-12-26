@@ -54,12 +54,13 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
                      readerMunicipality, readerPhone, readerEmail, readerOccupation)
 values ('Art', 'Tmava', 'Selim', 'M', '2002-02-11', 'William Walker', '1', '38349123456', 'atmava@gmail.com',
         'Student');
+
 SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values ('2020-12-26', 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values ('2020-12-26', 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 20, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (20, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -71,12 +72,11 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
                      readerMunicipality, readerPhone, readerEmail, readerOccupation)
 values ('Era', 'Hajdari', 'Ismajl', 'F', '2000-04-03', 'Bill Klinton', '1', '38344321546', 'eahajda@gmail.com',
         'Mesuese');
-SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values ('2019-11-22', 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values ('2019-11-22', 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 21, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (21, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -90,11 +90,11 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
 values ('Dren', 'Shehu', 'Safet', 'M', '2001-01-17', 'Ismail Kodra', '5', '38346768143', 'drensh1@gmail.com',
         'Student');
 SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values ('2019-5-6', 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values ('2019-5-6', 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 22, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (22, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -109,11 +109,11 @@ values ('Dimal', 'Kryeziu', 'Smajl', 'M', '2000-11-05', 'Sami Frasheri', '7', '3
         'Student');
 SET @reader = (SELECT LAST_INSERT_ID());
 
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 23, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (23, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -128,11 +128,11 @@ values ('Fjolla', 'Korenica', 'Hamez', 'F', '2004-07-30', '4 Llullat', '9', '383
         'Nxenese');
 SET @reader = (SELECT LAST_INSERT_ID());
 
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 24, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (24, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -147,11 +147,11 @@ values ('Aulona', 'Berisha', 'Kadri', 'F', '2003-05-04', 'Aleksandri i Madh', '1
         'aulonab32@gmail.com', 'Nxenese');
 SET @reader = (SELECT LAST_INSERT_ID());
 
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 25, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (25, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -167,11 +167,11 @@ values ('Drenusha', 'Selimi', 'Selman', 'F', '2002-10-22', 'Bekim Isma', '13', '
         'Studente');
 SET @reader = (SELECT LAST_INSERT_ID());
 
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 21, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (21, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -184,11 +184,11 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
 values ('Melos', 'Elshani', 'Xhevdet', 'M', '1995-12-05', 'Ukshin Hoti', '15', '38346332123', 'eoselshani@gmail.com',
         'Profesor');
 SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 27, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (27, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -201,11 +201,11 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
 values ('Klea', 'Dina', 'Albin', 'F', '1990-04-04', 'Isa Boletini', '17', '38349678555', 'dinaklea@gmail.com', 'Mjeke');
 SET @reader = (SELECT LAST_INSERT_ID());
 
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 25, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (25, 0.5, 1);
 
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
@@ -220,11 +220,11 @@ values ('Anjeza', 'Plakolli', 'Arif', 'F', '1994-06-25', 'Bajram Curri', '19', '
         'Edukatore');
 SET @reader = (SELECT LAST_INSERT_ID());
 
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 29, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (29, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -238,11 +238,11 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
 values ('Artan', 'Meha', 'Pajtim', 'M', '1992-11-11', 'Zahir Pajaziti', '12', '38349999567', 'mehaartan92@gmail.com',
         'Inxhinier');
 SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 30, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (30, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -256,11 +256,11 @@ insert into lexuesi (readerName, readerSurname, readerParentName, readerGender, 
 values ('Ensar', 'Hoti', 'Armend', 'M', '1998-09-09', 'Deshmoret e Lirise', '6', '38349677655', 'ensarhh@gmail.com',
         'Avokat');
 SET @reader = (SELECT LAST_INSERT_ID());
-insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration, readerID)
-values (CURDATE(), 365, true, 1, @reader);
+insert into regjistrimi (registrationDate, registrationLengthDays, registrationActive, typeOfRegistration)
+values (CURDATE(), 365, true, 1);
 SET @regjistrimi = (SELECT LAST_INSERT_ID());
-insert into pagesa (readerID, workerID, billPrice, typeOfPayment)
-values (@reader, 28, 0.5, 1);
+insert into pagesa (workerID, billPrice, typeOfPayment)
+values (28, 0.5, 1);
 update regjistrimi
 set billID = (SELECT LAST_INSERT_ID())
 where registrationID = @regjistrimi;
@@ -379,3 +379,4 @@ values ('61', '10', '5.00'),
        ('70', '10', '4.00'),
        ('71', '11', '3.00'),
        ('66', '12', '5.00');
+
