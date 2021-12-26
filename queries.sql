@@ -5,6 +5,20 @@ select l.readerID, l.readerName as Emri, l.readerSurname as Mbiemri from lexuesi
 inner join komuna k on l.readerMunicipality = k.municipalityID
 where municipalityName like 'Prishtin_';
 
+-- 3. Listoni lexuesit te cilet e kane vonuar kthimin e librit ne afatin 15
+-- ditesh per vitin 2020 ose 2021.
+
+update arkiva as a
+inner join huazimi h on a.borrowID = h.borrowID
+set a.returnedAfter = datediff(h.returnDate, h.borrowDate)
+where h.borrowID = a.borrowID;
+
+select distinct l.readerID, l.readerName, l.readerSurname from lexuesi  as l
+inner join huazimi h on l.readerID = h.readerID
+inner join arkiva a on h.borrowID = a.borrowID
+where a.returnedAfter > 15 and (year(h.borrowDate) = 2020 or year(h.borrowDate) = 2021);
+
+
 -- 5. Listoni top 5 lexuesit me numrin me te madh të huazimeve në 3
 -- muajt e fundit. Lista të paraqes të dhënat e lexusit duke përfshirë
 -- emrin e mbiemrin si dhe numrin e huazimeve që ka realizuar.
@@ -24,3 +38,4 @@ inner join pagesa p on r.billID = p.paymentID
 where year(r.registrationDate) >= 2019 and year(r.registrationDate) <= 2021
 group by `Viti`
 order by `Viti` desc;
+
