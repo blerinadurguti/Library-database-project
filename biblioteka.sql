@@ -4,32 +4,34 @@ use biblioteka;
 
 -- 1.
 create table if not exists Komuna(
-municipalityID integer,
-municipalityName varchar(50) unique,
+municipalityID integer not null,
+municipalityName varchar(50) unique not null,
 primary key (municipalityID)
 );
 
 -- 2.
 create table if not exists Lexuesi
 (
-    readerID         int auto_increment,
+    readerID         integer auto_increment not null,
     readerName       varchar(50)     not null,
     readerSurname    varchar(50)     not null,
     readerParentName varchar(50)     null,
     readerGender     enum ('M', 'F') not null,
     readerDoB        date            null,
     readerAddress    varchar(100)    null,
-    readerMunicipality integer not null,
+    readerMunicipality integer null,
     readerPhone      varchar(20)     null,
-    readerEmail varchar(100),
+    readerEmail      varchar(100),
     readerOccupation varchar(100),
     primary key (readerID),
-    foreign key (readerMunicipality) references Komuna(municipalityID)
+    foreign key (readerMunicipality) references Komuna(municipalityID) on delete set null
 );
+alter table Lexuesi AUTO_INCREMENT = 10;
+
 
 -- 3.
 create table if not exists Punetori(
-workerID integer,
+workerID integer auto_increment not null,
 workerName varchar(50),
 workerSurname varchar(50),
 workerPosition varchar(50),
@@ -39,13 +41,14 @@ workerPhone varchar(20) unique,
 workerEmail varchar(50) unique,
 workerWage real not null,
 primary key(workerID),
-foreign key(workerMunicipality) references Komuna(municipalityID)
+foreign key(workerMunicipality) references Komuna(municipalityID) on delete set null
 );
+alter table Punetori AUTO_INCREMENT = 20;
 
 -- 4.
 
 create table if not exists Autori(
-authorID integer,
+authorID integer auto_increment not null ,
 authorName varchar(80),
 authorDoB date,
 authorPoB varchar (50),
@@ -54,19 +57,20 @@ authorNumOfWorks integer,
 authorWorkEra varchar (50),
 primary key(authorID)
 );
-
+alter table Autori AUTO_INCREMENT = 30;
 -- 5.
-
+drop table Zhanri;
 create table if not exists Zhanri
 (
-    genreID integer,
-    genderName varchar(50) unique,
+    genreID integer auto_increment not null,
+    genreName varchar(50) unique,
     primary key (genreID)
 );
+alter table Zhanri AUTO_INCREMENT = 40;
 
 -- 6.
 create table if not exists Seksionet(
-sectionID integer,
+sectionID integer auto_increment not null ,
 genreID integer,
 sectionAgeGroup varchar(25),
 sectionNumOfCopies integer,
@@ -74,14 +78,16 @@ sectionWorker integer,
 sectionFloor integer,
 sectionName varchar(20),
 primary key(sectionID),
-foreign key(genreID) references Zhanri (genreID),
-foreign key(sectionWorker) references Punetori(workerID)
+foreign key(genreID) references Zhanri (genreID) on delete set null,
+foreign key(sectionWorker) references Punetori(workerID) on delete set null
 );
+alter table Seksionet AUTO_INCREMENT = 50;
 
 
+drop table libri;
 -- 7.
 create table if not exists Libri (
-bookID integer,
+bookID integer auto_increment not null,
 bookTitle varchar(30),
 bookAuthor integer,
 bookGenre integer,
@@ -93,13 +99,15 @@ bookSection integer,
 primary key (bookID),
 foreign key(bookAuthor) references Autori(authorID),
 foreign key(bookGenre) references Zhanri(genreID),
-foreign key (bookAcceptedByWorker) references Punetori (workerID),
-foreign key (bookSection) references Seksionet(sectionID)
+foreign key (bookAcceptedByWorker) references Punetori (workerID) on delete set null,
+foreign key (bookSection) references Seksionet(sectionID) on delete set null
 );
+alter table Libri AUTO_INCREMENT = 60;
 
+drop table huazimi;
 -- 8.
 create table if not exists Huazimi(
-borrowID integer,
+borrowID integer auto_increment not null,
 borrowedBookID integer,
 readerID integer,
 borrowDate date,
@@ -111,8 +119,11 @@ foreign key(borrowedBookID) references Libri(bookID),
 foreign key(readerID) references Lexuesi(readerID),
 foreign key(workerID) references Punetori(workerID)
 );
-drop table if exists Arkiva;
+alter table Huazimi AUTO_INCREMENT = 70;
+
 -- 9.
+drop table arkiva;
+
 create table if not exists Arkiva
 (
     logID integer not null AUTO_INCREMENT,
@@ -123,11 +134,12 @@ create table if not exists Arkiva
     primary key(logID),
     foreign key(bookID) references Libri(bookID),
     foreign key (readerID) references Lexuesi(readerID),
-    foreign key (borrowID) references Huazimi (borrowID)
+    foreign key (borrowID) references Huazimi (borrowID) on delete cascade
 );
+alter table Arkiva AUTO_INCREMENT = 80;
 
+drop table Pagesa;
 
-drop table if exists Pagesa;
 -- 10.
 create table if not exists Pagesa
 (
@@ -140,6 +152,9 @@ create table if not exists Pagesa
     foreign key (readerID) references Lexuesi (readerID),
     foreign key (workerID) references Punetori (workerID)
 );
+alter table pagesa AUTO_INCREMENT = 90;
+
+
 drop table if exists LibratDemtuar;
 -- 11.
 create table if not exists LibratDemtuar
@@ -153,11 +168,10 @@ create table if not exists LibratDemtuar
     primary key(damagedBookID),
     foreign key(bookID) references Libri(bookID),
     foreign key(workerID) references Punetori(workerID),
-    foreign key(billID) references Pagesa(paymentID)
+    foreign key(billID) references Pagesa(paymentID) on delete cascade
 );
+alter table LibratDemtuar AUTO_INCREMENT = 100;
 
-
-drop table if exists Regjistrimi;
 -- 12.
 create table if not exists Regjistrimi
 (
@@ -168,9 +182,12 @@ create table if not exists Regjistrimi
     registrationActive bool,
     typeOfRegistration enum('Anetare', 'Lexues'),
     primary key(registrationID),
-    foreign key(billID) references Pagesa(paymentID)
+    foreign key(billID) references Pagesa(paymentID) on delete restrict
 );
-drop table if exists DhurimiLibrit;
+alter table Regjistrimi AUTO_INCREMENT = 110;
+
+
+
 -- 13.
 create table if not exists DhurimiLibrit(
     donationID integer not null AUTO_INCREMENT,
@@ -178,11 +195,13 @@ create table if not exists DhurimiLibrit(
     workerID integer,
     donationDate date,
     primary key (donationID),
-    foreign key(bookID) references Libri (bookID),
+    foreign key(bookID) references Libri (bookID) on delete cascade,
     foreign key(workerID) references Punetori(workerID)
 );
+alter table DhurimiLibrit AUTO_INCREMENT = 120;
 
-drop table if exists Vleresimi;
+
+drop table vleresimi;
 -- 14.
 create table if not exists Vleresimi
 (
@@ -195,5 +214,4 @@ create table if not exists Vleresimi
     foreign key(bookReviewed) references Libri (bookID),
     foreign key (reviewer) references Lexuesi (readerID)
 );
-
-alter table Vleresimi AUTO_INCREMENT = 800;
+alter table Vleresimi AUTO_INCREMENT = 130;
