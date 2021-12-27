@@ -320,3 +320,13 @@ create table if not exists Vleresimi
 alter table
     Vleresimi
     AUTO_INCREMENT = 130;
+
+
+-- USED TO ACCOMMODATE READER PREFERRED GENRE
+alter table Lexuesi
+add column FavGenre integer references Zhanri(genreID);
+
+
+UPDATE Lexuesi
+SET biblioteka.Lexuesi.FavGenre = (SELECT genreID FROM zhanri ORDER BY RAND() LIMIT 0,1)
+where 1 = 1;
