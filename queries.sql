@@ -40,6 +40,16 @@ from lexuesi as l
 where a.returnedAfter > 15
   and (year(h.borrowDate) = 2020 or year(h.borrowDate) = 2021);
 
+-- 4. Listoni ID-të dhe titullin e librave qe ne vitin 2019 ose 2020 jane
+-- huazur se paku nje here kurse ne vitin 2021 asnjehere .
+-- year(borrowDate) = 2019 or year(borrowDate) = 2020
+select distinct l.bookID, l.bookTitle from huazimi h1
+inner join libri l on h1.borrowedBookID = l.bookID
+where h1.borrowedBookID not in (
+    select h2.borrowedBookID from huazimi h2
+    where year(borrowDate) = 2021
+) and (year(borrowDate) = 2019 or year(borrowDate) = 2020);
+
 
 -- 5. Listoni top 5 lexuesit me numrin me te madh të huazimeve në 3
 -- muajt e fundit. Lista të paraqes të dhënat e lexusit duke përfshirë
