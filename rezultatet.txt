@@ -1,0 +1,98 @@
+1.
++--------+----+-------+
+|readerID|Emri|Mbiemri|
++--------+----+-------+
+|10      |Art |Tmava  |
+|11      |Era |Hajdari|
++--------+----+-------+
+
+2.
++----------+-------------+
+|readerName|readerSurname|
++----------+-------------+
+|Fjolla    |Korenica     |
++----------+-------------+
+
+3.
++--------+------+--------+
+|readerID|Emri  |Mbiemri |
++--------+------+--------+
+|11      |Era   |Hajdari |
+|14      |Fjolla|Korenica|
+|21      |Ensar |Hoti    |
++--------+------+--------+
+
+4.
++------+----------------+
+|bookID|Titulli i librit|
++------+----------------+
+|67    |Alkimisti       |
+|66    |Kodi i Da Vincit|
+|70    |Malesorja       |
++------+----------------+
+
+5.
++--------+-------+-----------------+
+|Emri    |Mbiemri|Numri i huazimeve|
++--------+-------+-----------------+
+|Era     |Hajdari|3                |
+|Art     |Tmava  |1                |
+|Drenusha|Selimi |1                |
++--------+-------+-----------------+
+
+6.
++----+-------------+
+|Viti|Shuma fitimit|
++----+-------------+
+|2021|4.5          |
+|2020|0.5          |
+|2019|1            |
++----+-------------+
+
+7.
++--------+-------+---------------+----------------+-------+
+|Emri    |Mbiemri|Numri Huazimeve|Zhanri preferuar|Vonesat|
++--------+-------+---------------+----------------+-------+
+|Art     |Tmava  |1              |Aventure        |0      |
+|Era     |Hajdari|3              |Poeme           |3      |
+|Drenusha|Selimi |1              |Poeme           |0      |
++--------+-------+---------------+----------------+-------+
+
+8.
++-----------------+-----------------+
+|Libri            |Libri me i lexuar|
++-----------------+-----------------+
+|Mendafshi francez|1                |
++-----------------+-----------------+
+
+9. Menyra 1
++---------------+---------------+
+|Autori         |Numri huazimeve|
++---------------+---------------+
+|Sandra Brown   |2              |
+|Ismail Kadare  |2              |
+|Dan Brown      |2              |
+|Khaled Hossein |1              |
+|George Orwell  |1              |
+|Harper Lee     |1              |
+|Paulo Coelho   |1              |
+|Brunilda Zllami|1              |
+|Nazmi Rrahmani |1              |
++---------------+---------------+
+
+9. Menyra 2
++---------------+---------+
+|Autori         |Vleresimi|
++---------------+---------+
+|Brunilda Zllami|4.9      |
+|Dan Brown      |4.57     |
+|George Orwell  |4.5      |
+|Nazmi Rrahmani |4.4      |
+|Sandra Brown   |4.3      |
+|Ismail Kadare  |4.2      |
+|Harper Lee     |4        |
+|Paulo Coelho   |3.85     |
+|Kristy Moseley |3.75     |
+|Jeronim De Rada|3        |
++---------------+---------+
+

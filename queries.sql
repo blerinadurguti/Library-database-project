@@ -20,11 +20,6 @@ from lexuesi l
          having count(*) > 1
      ) as hz on l.readerID = hz.readerID;
 
-
-
-select *
-from huazimi;
-
 -- 3. Listoni lexuesit te cilet e kane vonuar kthimin e librit ne afatin 15
 -- ditesh per vitin 2020 ose 2021.
 
@@ -33,7 +28,7 @@ update arkiva as a
 set a.returnedAfter = datediff(h.returnDate, h.borrowDate)
 where h.borrowID = a.borrowID;
 
-select distinct l.readerID, l.readerName, l.readerSurname
+select distinct l.readerID, l.readerName as Emri, l.readerSurname as Mbiemri
 from lexuesi as l
          inner join huazimi h on l.readerID = h.readerID
          inner join arkiva a on h.borrowID = a.borrowID
@@ -43,7 +38,7 @@ where a.returnedAfter > 15
 -- 4. Listoni ID-të dhe titullin e librave qe ne vitin 2019 ose 2020 jane
 -- huazur se paku nje here kurse ne vitin 2021 asnjehere .
 -- year(borrowDate) = 2019 or year(borrowDate) = 2020
-select distinct l.bookID, l.bookTitle from huazimi h1
+select distinct l.bookID, l.bookTitle as `Titulli i librit` from huazimi h1
 inner join libri l on h1.borrowedBookID = l.bookID
 where h1.borrowedBookID not in (
     select h2.borrowedBookID from huazimi h2
