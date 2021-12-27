@@ -39,3 +39,17 @@ where year(r.registrationDate) >= 2019 and year(r.registrationDate) <= 2021
 group by `Viti`
 order by `Viti` desc;
 
+-- 9. Cili eshte autori me i preferuar nga lexuesit?
+-- Ne baze te numrit te huazimeve
+select authorName Autori, count(authorID) as `Numri huazimeve` from autori
+inner join libri l on autori.authorID = l.bookAuthor
+inner join huazimi h on l.bookID = h.borrowedBookID
+group by authorID
+order by `Numri huazimeve` desc;
+
+-- Ne baze te mesatares se vleresimit
+select a.authorName as Autori, round(avg(v.reviewLevel),2) as Vleresimi from autori a
+inner join libri l on a.authorID = l.bookAuthor
+inner join vleresimi v on l.bookID = v.bookReviewed
+group by authorID
+order by Vleresimi desc;
