@@ -23,11 +23,6 @@ from lexuesi l
 -- 3. Listoni lexuesit te cilet e kane vonuar kthimin e librit ne afatin 15
 -- ditesh per vitin 2020 ose 2021.
 
-update arkiva as a
-    inner join huazimi h on a.borrowID = h.borrowID
-set a.returnedAfter = datediff(h.returnDate, h.borrowDate)
-where h.borrowID = a.borrowID;
-
 select distinct l.readerID, l.readerName as Emri, l.readerSurname as Mbiemri
 from lexuesi as l
          inner join huazimi h on l.readerID = h.readerID

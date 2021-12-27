@@ -199,3 +199,8 @@ UPDATE Lexuesi
 SET biblioteka.Lexuesi.FavGenre = (SELECT genreID FROM zhanri ORDER BY RAND() LIMIT 0,1)
 where 1 = 1;
 
+update arkiva as a
+    inner join huazimi h on a.borrowID = h.borrowID
+set a.returnedAfter = datediff(h.returnDate, h.borrowDate)
+where h.borrowID = a.borrowID;
+
