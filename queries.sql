@@ -88,6 +88,14 @@ from (
                           group by a.readerID) as vonesat
                          on vonesat.readerID = nrh.readerID
          inner join zhanri zh on zh.genreID = l.FavGenre;
+         
+ -- 8. Gjeni top librin me te lexuar per vitin aktual.
+     select bookTitle Libri, count(bookID) as 'Libri me i lexuar' from libri
+     inner join huazimi h on libri.bookID =h.borrowedBookID
+     where h.borrowDate>='2021-01-01' and h.borrowDate<='2021-12-31'
+     group by bookID
+     order by 'Libri me i lexuar'
+     limit 1;
 
 -- 9. Cili eshte autori me i preferuar nga lexuesit?
 -- Ne baze te numrit te huazimeve
