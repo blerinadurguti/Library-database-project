@@ -6,6 +6,25 @@ from lexuesi as l
          inner join komuna k on l.readerMunicipality = k.municipalityID
 where municipalityName like 'Prishtin_';
 
+-- 2. Cilët lexues (Emrin dhe Mbiemrin e tyre) kanë huazuar te pakten dy
+-- libra gjate vitit 2020?
+
+select l.readerName, readerSurname
+from lexuesi l
+         inner join
+     (
+         select readerID
+         from huazimi h
+         where year(h.borrowDate) = 2020
+         group by readerID
+         having count(*) > 1
+     ) as hz on l.readerID = hz.readerID;
+
+
+
+select *
+from huazimi;
+
 -- 3. Listoni lexuesit te cilet e kane vonuar kthimin e librit ne afatin 15
 -- ditesh per vitin 2020 ose 2021.
 
