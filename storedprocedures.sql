@@ -30,3 +30,19 @@ end $$
 delimiter $$
 
 call libri_iri();
+
+-- Shembull 3
+
+-- Procedure qe gjen librat e shkruar nga Dan Brown
+
+delimiter $$
+create procedure librateDanBrown()
+begin
+select distinct bookID, bookTitle, bookAuthor
+from Libri, Autori
+where libri.bookAuthor=autori.authorID 
+and autori.authorName='Dan Brown';
+end $$
+delimiter $$
+
+call librateDanBrown();
