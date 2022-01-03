@@ -1,3 +1,5 @@
+-- Shembull 1
+
 -- Paraqit pagesat e kryera per regjistrim
 
 create view paraqitPagesat as
@@ -5,6 +7,8 @@ select paymentID, billPrice
 from Pagesa where typeOfPayment like 'Registration';
 
 select * from paraqitPagesat;
+
+-- Shembull 2 
 
 -- Paraqit librat e demtuar nga pakujdesia
 
@@ -14,6 +18,8 @@ from libratdemtuar where damagedRegNotes like 'Pakujdesi';
 
 select * from LibratEDemtuar;
 
+-- Shembull 3
+
 -- Paraqit librat e dhuruar me 10 Dhjetor
 
 create view LibriDhuruar as
@@ -21,6 +27,8 @@ select bookID, donationDate
 from dhurimilibrit where donationDate like '2020-12-10';
 
 select * from LibriDhuruar;
+
+-- Shembull 4
 
 -- Lexuesit qe jane nga Prishtina dhe jane studente
 
@@ -31,6 +39,8 @@ where readerMunicipality ='1'
 and readerOccupation ='Student';
 
 select * from Studentet_e_Kryeqytetit;
+
+-- Shembull 5
 
 -- Paraqit lexuesit qe kane vleresuar nje liber te caktuar me 4.50
 
