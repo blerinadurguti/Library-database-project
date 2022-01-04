@@ -56,9 +56,7 @@ create table if not exists Lexuesi
     readerPhone        varchar(20),
     readerEmail        varchar(100) unique    not null,
     readerOccupation   varchar(100),
-    readerRegistration integer,
-    primary key (readerID),
-    foreign key (readerMunicipality) references Komuna (municipalityID) on delete restrict on update cascade
+    primary key (readerID)
 );
 
 alter table
@@ -274,12 +272,6 @@ create table if not exists Regjistrimi
     foreign key (readerID) references Lexuesi (readerID) on delete restrict on update cascade
 );
 
-alter table
-    Lexuesi
-    add
-        foreign key (readerRegistration) references Regjistrimi (registrationID) on delete
-            set
-            null on update cascade;
 
 alter table
     Regjistrimi

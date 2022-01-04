@@ -19,7 +19,6 @@ BEGIN
     update libri set bookNumOfCopies = bookNumOfCopies + 1  where bookID = new.borrowedBookID;
         END IF;
 END#
-
 CREATE TRIGGER marrja_librit
 AFTER INSERT
 ON huazimi FOR EACH ROW
@@ -59,7 +58,6 @@ IF new.typeOfPayment = 'Registration' then
 END IF;
 END#
 
-
 CREATE TRIGGER pas_pageses
 AFTER UPDATE
 ON pagesa FOR EACH ROW
@@ -83,3 +81,30 @@ BEGIN
     insert into pagesa (readerID, billPrice, typeOfPayment)
     values (new.readerID, null, 2);
 END#
+drop trigger if exists pas_dhurimitlibrit;
+create trigger pas_dhurimitlibrit
+    after insert
+    on dhurimilibrit for each row
+BEGIN
+    update libri
+        set bookNumOfCopies = bookNumOfCopies + 1
+    where libri.bookID = new.bookID;
+end #
+
+drop trigger if exists para_marrjes_librit;
+CREATE TRIGGER para_marrjes_librit
+    BEFORE INSERT
+    ON huazimi FOR EACH ROW
+BEGIN
+    IF not checkIfMembershipActive(new.readerID) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Lexuesi nuk ka regjistrim aktiv';
+    END IF;
+END#
+
+delimiter ;
+
+-- select checkIfMembershipActive(10);
+
+-- or curdate() > adddate(regDate, regLength)
+

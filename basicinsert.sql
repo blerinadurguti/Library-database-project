@@ -117,6 +117,7 @@ VALUES ('Adnit', 'Kamberi', 'M', 'adnitk01@gmail.com');
 
 
 
+
 -- when a book is damaged, triggers are run to make a new record in payment
 
 -- when a payment is made, triggers are run to update their respective fields,
