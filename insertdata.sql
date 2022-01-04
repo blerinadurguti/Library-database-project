@@ -168,7 +168,7 @@ values (61, '10', '70'),
        (60, '19', '80'),
        (70, '12', '81');
 
-insert into libratdemtuar (bookID, bookRegistrationDate, workerID, billID, damagedRegNotes)
+insert into libratdemtuar (bookID, bookDamagedDate, workerID, billID, damagedRegNotes)
 values ('60', '2012-05-12', '21', 91, 'Pakujdesi'),
        ('61', '2016-01-10', '22', 91, 'Lageshtia'),
        ('70', '2018-04-03', '25', 90, 'Pakujdesi'),
