@@ -214,11 +214,16 @@ alter table
 create table if not exists Pagesa
 (
     paymentID     integer                                not null AUTO_INCREMENT,
+    billTime      datetime,
+    readerID      integer,
     workerID      integer,
-    billPrice     real                                   not null,
+    billPrice     real,
     typeOfPayment enum ('Registration', 'Damaging fees') not null,
     primary key (paymentID),
     foreign key (workerID) references Punetori (workerID) on delete
+        set
+        null on update cascade,
+    foreign key (readerID) references Lexuesi (readerID) on delete
         set
         null on update cascade
 );
@@ -234,7 +239,7 @@ create table if not exists LibratDemtuar
 (
     damagedBookID        integer not null AUTO_INCREMENT,
     bookID               integer,
-    bookRegistrationDate date,
+    bookDamagedDate      date,
     workerID             integer,
     billID               integer,
     damagedRegNotes      varchar(80),
@@ -260,11 +265,13 @@ create table if not exists Regjistrimi
     registrationID         integer not null AUTO_INCREMENT,
     registrationDate       date,
     billID                 integer,
+    readerID               integer,
     registrationLengthDays integer,
     registrationActive     bool,
     typeOfRegistration     enum ('Anetare', 'Lexues'),
     primary key (registrationID),
-    foreign key (billID) references Pagesa (paymentID) on delete restrict on update cascade
+    foreign key (billID) references Pagesa (paymentID) on delete restrict on update cascade,
+    foreign key (readerID) references Lexuesi (readerID) on delete restrict on update cascade
 );
 
 alter table
