@@ -27,8 +27,8 @@ select distinct l.readerID, l.readerName as Emri, l.readerSurname as Mbiemri
 from lexuesi as l
          inner join huazimi h on l.readerID = h.readerID
          inner join arkiva a on h.borrowID = a.borrowID
-where a.returnedAfter > 15
-  and (year(h.borrowDate) = 2020 or year(h.borrowDate) = 2021);
+  where (year(h.borrowDate) = 2020 or year(h.borrowDate) = 2021)
+  and datediff(h.returnDate,h.borrowDate)>15;
 
 -- 4. Listoni ID-të dhe titullin e librave qe ne vitin 2019 ose 2020 jane
 -- huazur se paku nje here kurse ne vitin 2021 asnjehere .
@@ -47,10 +47,12 @@ where h1.borrowedBookID not in (
 select l.readerName as Emri, l.readerSurname as Mbiemri, count(h.readerID) as `Numri i huazimeve`
 from lexuesi as l
          inner join huazimi h on l.readerID = h.readerID
-where borrowDate >= CURDATE() - interval 3 month
+where returnDate >= CURDATE() - interval 3 month
 group by h.readerID
 order by `Numri i huazimeve` desc
 limit 5;
+
+
 
 -- 6. Gjeni shumen e fituar nga te gjitha anetaresimet, te ndare ne vite
 -- 2019,2020,2021. Rezultati duhet te jete nje tabele te ka fushat Viti, Shuma.
