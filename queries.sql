@@ -73,7 +73,8 @@ select l.readerName                    Emri,
        l.readerSurname                 Mbiemri,
        nrh.`Numri Huazimeve`,
        zh.genreName                    `Zhanri preferuar`,
-       IFNULL(vonesat.nrvonesav, 0) as Vonesat
+       IFNULL(vonesat.nrvonesav, 0) as
+           Vonesat
 from (
          select h.readerID, count(*) as `Numri Huazimeve`
          from huazimi as h
@@ -84,7 +85,8 @@ from (
          left join lexuesi l on nrh.readerID = l.readerID
          left outer join (select a.readerID, count(*) as nrvonesav
                           from arkiva as a
-                          where a.returnedAfter > 15
+                            inner join huazimi h2 on a.borrowID = h2.borrowID
+                          where a.returnedAfter > 15 and year(curdate()) = year(h2.borrowDate)
                           group by a.readerID) as vonesat
                          on vonesat.readerID = nrh.readerID
          inner join zhanri zh on zh.genreID = l.FavGenre;

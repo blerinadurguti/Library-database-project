@@ -99,24 +99,22 @@ values ('Nje mije diej vezullues', 30, 41, '34', '2011-10-31', 20, 'E re', 50),
        ('Malesorja', 39, 40, '12', '2017-10-24', 30, 'E demtuar', 60),
        ('Kenget e Milosaos', 40, 44, '8', '2013-02-03', 31, 'E perdorur', 61);
 
-alter table
-    Libri
-    AUTO_INCREMENT = 60;
-
-UPDATE Lexuesi
-SET biblioteka.Lexuesi.FavGenre = (SELECT genreID FROM zhanri ORDER BY RAND() LIMIT 0,1)
-where 1 = 1;
-
 -- when inserting a reader, triggers are run to make a new record in registration and payment table
 
 INSERT INTO biblioteka.lexuesi (readerName, readerSurname, readerGender,
                                  readerEmail)
 VALUES ('Adnit', 'Kamberi', 'M', 'adnitk01@gmail.com');
 
+
 -- when borrowing a book, triggers are run to make a new record arkiva and update number of copies in book table
 
+insert into huazimi (borrowedBookID, readerID, borrowDate, workerID)
+values (61, 10, curdate(), 20 );
 
 
+update huazimi
+set returnDate = adddate(curdate(), 10)
+where 1 = 1;
 
 -- when a book is damaged, triggers are run to make a new record in payment
 
@@ -130,3 +128,4 @@ UPDATE pagesa SET
     WHERE paymentID = 90;
 
 -- or when u pay for a damaged book it updates the record for a damaged book to reference it's payment
+

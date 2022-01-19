@@ -1,3 +1,4 @@
+create database if not exists biblioteka;
 use biblioteka;
 
 SET
@@ -13,14 +14,11 @@ drop table if exists vleresimi;
 drop table if exists lexuesi;
 drop table if exists libri;
 drop table if exists autori;
-
 drop table if exists seksionet;
-
 drop table if exists punetori;
-
 drop table if exists komuna;
-
 drop table if exists zhanri;
+drop table if exists titulli;
 
 SET
     FOREIGN_KEY_CHECKS = 1;
@@ -118,7 +116,7 @@ create table if not exists Seksionet
     sectionID          integer auto_increment not null,
     genreID            integer,
     sectionAgeGroup    varchar(25)            not null,
-    sectionNumOfCopies integer,
+    sectionNumOfCopies integer                default 0,
     sectionWorker      integer,
     sectionFloor       integer                not null,
     sectionName        varchar(20)            not null,
